@@ -15,8 +15,7 @@ public class UserDto : AddUserDto
             LastName = user.LastName,
             Email = user.Email,
             Password = user.Password,
-            Gender = user.Gender,
-            Role = user.Role,
+            Gender = user.Gender
 
         };
     }

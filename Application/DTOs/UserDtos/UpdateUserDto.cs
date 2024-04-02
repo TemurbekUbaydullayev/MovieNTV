@@ -2,24 +2,24 @@
 using Domain.Enums;
 
 namespace Application.DTOs.UserDtos;
-public class AddUserDto
+
+public class UpdateUserDto
 {
+    public int Id { get; set; }
     public string FirstName { get; set; } = "";
     public string LastName { get; set; } = "";
     public string Email { get; set; } = "";
     public Gender Gender { get; set; }
-    public string Password { get; set; } = "";
 
-    public static implicit operator User(AddUserDto dto)
+    public static implicit operator User(UpdateUserDto dto)
     {
-        return new User 
+        return new User()
         {
+            Id = dto.Id,
             FirstName = dto.FirstName,
             LastName = dto.LastName,
             Email = dto.Email,
             Gender = dto.Gender,
-            Password = dto.Password
         };
-
     }
 }
