@@ -1,11 +1,8 @@
-﻿using Data.DbContexts;
-using Data.Interfaces;
-using Domain.Entities;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace Data.Repositories;
 
-public class GenericRepository<T>(AppDbContext dbContext) 
+public class GenericRepository<T>(AppDbContext dbContext)
     : IGenericRepository<T> where T : Base
 {
     protected readonly AppDbContext _dbContext = dbContext;
@@ -27,7 +24,7 @@ public class GenericRepository<T>(AppDbContext dbContext)
         => await _dbSet.ToListAsync();
 
     public async Task<T?> GetByIdAsync(int id)
-        => await _dbSet.FirstOrDefaultAsync( x => x.Id == id);
+        => await _dbSet.FirstOrDefaultAsync(x => x.Id == id);
     public async Task UpdateAsync(T entity)
     {
         _dbSet.Update(entity);

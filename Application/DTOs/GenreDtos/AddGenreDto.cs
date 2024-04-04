@@ -13,5 +13,5 @@ public class AddGenreDto
             Name = dto.Name,
             Description = dto.Description
         };
-    } 
+    }
 }

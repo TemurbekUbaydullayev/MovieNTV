@@ -12,7 +12,7 @@ public class AddUserDto
 
     public static implicit operator User(AddUserDto dto)
     {
-        return new User 
+        return new User
         {
             FirstName = dto.FirstName,
             LastName = dto.LastName,

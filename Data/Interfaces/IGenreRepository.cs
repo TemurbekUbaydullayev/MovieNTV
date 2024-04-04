@@ -1,7 +1,6 @@
-﻿using Domain.Entities;
-
-namespace Data.Interfaces;
+﻿namespace Data.Interfaces;
 
 public interface IGenreRepository : IGenericRepository<Genre>
 {
+    Task<Genre?> GetByNameAsync(string name);
 }

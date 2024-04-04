@@ -1,6 +1,5 @@
 ﻿using Application.DTOs.UserDtos;
 using Application.Interfaces;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MovieNTV.Controllers
@@ -31,7 +30,7 @@ namespace MovieNTV.Controllers
         }
 
         [HttpDelete("id")]
-        public async Task<IActionResult> DeleteAsync( int id)
+        public async Task<IActionResult> DeleteAsync(int id)
         {
             await _userService.DeleteAsync(id);
             return Ok();

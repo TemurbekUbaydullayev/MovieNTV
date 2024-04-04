@@ -2,7 +2,7 @@
 
 namespace Application.Interfaces;
 
-public interface IUserService 
+public interface IUserService
 {
     Task<UserDto> GetByIdAsync(int id);
     Task<List<UserDto>> GetAllAsync();

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Application.Common.Security
 {
-    public  static class PasswordHasher
+    public static class PasswordHasher
     {
 
         public static string GetHash(this string password)

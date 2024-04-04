@@ -40,7 +40,7 @@ public class ExceptionHandleMiddleware(RequestDelegate next)
 
     public async Task ClientErrorHandleAsync(HttpContext context, StatusCodeExeption exeption)
     {
-        context.Response.ContentType= "application/json";
+        context.Response.ContentType = "application/json";
         var result = new ErrorMessage()
         {
             Message = exeption.Message,

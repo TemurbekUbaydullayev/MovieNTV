@@ -1,7 +1,6 @@
-﻿using Domain.Entities;
-
-namespace Data.Interfaces;
+﻿namespace Data.Interfaces;
 
 public interface IMovieRepository : IGenericRepository<Movie>
 {
+    Task<List<Movie>> GetByNameAsync(string name);
 }

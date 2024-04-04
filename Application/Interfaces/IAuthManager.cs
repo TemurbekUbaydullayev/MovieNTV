@@ -1,6 +1,6 @@
 ﻿using Domain.Entities;
 namespace Application.Interfaces;
-public  interface IAuthManager
+public interface IAuthManager
 {
     string GeneratedToken(User user);
 }

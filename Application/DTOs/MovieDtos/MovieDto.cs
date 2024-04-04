@@ -4,8 +4,9 @@ namespace Application.DTOs.MovieDtos;
 public class MovieDto : AddMovieDto
 {
     public int Id { get; set; }
+    public Genre Genre { get; set; } = null!;
 
-    public static implicit operator MovieDto (Movie movie)
+    public static implicit operator MovieDto(Movie movie)
     {
         return new MovieDto()
         {
@@ -17,7 +18,7 @@ public class MovieDto : AddMovieDto
             Director = movie.Director,
             Country = movie.Country,
             GenreId = movie.GenreId,
-            Year   = movie.Year,    
+            Year = movie.Year,
         };
 
     }

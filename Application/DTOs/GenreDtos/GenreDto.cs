@@ -7,11 +7,21 @@ public class GenreDto : AddGenreDto
 
     public static implicit operator GenreDto(Genre genre)
     {
-        return new GenreDto
+        return new GenreDto()
         {
             Id = genre.Id,
             Name = genre.Name,
             Description = genre.Description,
+        };
+    }
+
+    public static implicit operator Genre(GenreDto dto)
+    {
+        return new Genre()
+        {
+            Id = dto.Id,
+            Name = dto.Name,
+            Description = dto.Description
         };
     }
 }
