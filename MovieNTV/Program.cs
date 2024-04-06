@@ -7,6 +7,7 @@ using Data.Repositories;
 using Domain.Entities;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
+using MovieNTV.Configurations;
 using MovieNTV.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -35,6 +36,10 @@ builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<IGenreService, GenreService>();
 builder.Services.AddTransient<IMovieService, MovieService>();
 
+// Configure
+builder.Services.ConfigureJwtAuthorize(builder.Configuration);
+builder.Services.ConfigureSwaggerAuthorize(builder.Configuration);
+
 //Validator
 builder.Services.AddScoped<IValidator<User>, UserValidator>();
 builder.Services.AddScoped<IValidator<Genre>, GenreValidator>();
@@ -51,6 +56,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

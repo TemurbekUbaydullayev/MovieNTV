@@ -14,5 +14,4 @@ public static class Extensions
         }
         return resultMessage.ToString();
     }
-
 }

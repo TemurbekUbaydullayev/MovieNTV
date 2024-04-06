@@ -1,5 +1,6 @@
 ﻿using Application.DTOs.GenreDtos;
 using Application.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MovieNTV.Controllers;
@@ -10,33 +11,33 @@ public class GenresController(IGenreService genreService) : ControllerBase
 {
     private readonly IGenreService _genreService = genreService;
 
-    [HttpPost]
+    [HttpPost, Authorize(Roles = "Admin")]
     public async Task<IActionResult> CreateAsync([FromForm] AddGenreDto dto)
     {
         await _genreService.CreateAsync(dto);
         return Ok();
     }
 
-    [HttpGet]
+    [HttpGet, AllowAnonymous]
     public async Task<IActionResult> GetAllAsync()
     {
         return Ok(await _genreService.GetAllAsync());
     }
 
-    [HttpGet("{id}")]
+    [HttpGet("{id}"), Authorize(Roles = "Admin")]
     public async Task<IActionResult> GetByIdAsync(int id)
     {
         return Ok(await _genreService.GetByIdAsync(id));
     }
 
-    [HttpDelete("{id}")]
+    [HttpDelete("{id}"), Authorize(Roles = "Admin")]
     public async Task<IActionResult> DeleteAsync(int id)
     {
         await _genreService.DeleteAsync(id);
         return Ok();
     }
 
-    [HttpPut]
+    [HttpPut, Authorize("Admin")]
     public async Task<IActionResult> UpdateAsync([FromForm] GenreDto dto)
     {
         await _genreService.UpdateAsync(dto);

@@ -1,5 +1,6 @@
 ﻿using Application.DTOs.MovieDtos;
 using Application.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,4 +23,12 @@ public class MovieController(IMovieService movieService) : ControllerBase
     {
         return Ok(await _movieService.GetByIdAsync(id));
     }
+
+    [HttpGet("movies")]
+    [Authorize]
+    public async Task<IActionResult> GetAllAsync()
+    {
+        return Ok(await _movieService.GetAllAsync());
+    }
+    
 }

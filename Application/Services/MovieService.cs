@@ -32,9 +32,28 @@ public class MovieService(IUnitOfWork unitOfWork,
         await _unitOfWork.Movie.DeleteAsync(movie);
     }
 
-    public Task<List<MovieDto>> GetAllAsync()
+    public async Task<List<MovieDto>> GetAllAsync()
     {
-        throw new NotImplementedException();
+        var movies = await _unitOfWork.Movie.GetAllAsync();
+        var genres = await _unitOfWork.Genre.GetAllAsync();
+
+        var entities = new List<MovieDto>();
+
+        foreach (var movie in movies)
+        {
+            var genre = genres.First(p => p.Id == movie.GenreId);
+            var dto = (MovieDto)movie;
+            dto.Genre = new Genre()
+            {
+                Id = genre.Id,
+                Name = genre.Name,
+                Description = genre.Description,
+            };
+
+            entities.Add(dto);
+        }
+
+        return entities;
     }
 
     public async Task<MovieDto> GetByIdAsync(int id)
@@ -44,8 +63,7 @@ public class MovieService(IUnitOfWork unitOfWork,
             throw new StatusCodeExeption(HttpStatusCode.NotFound, "Movie topilmadi");
 
         var genre = await _unitOfWork.Genre.GetByIdAsync(movie.GenreId);
-        var entity = (MovieDto)movie;
-        
+        var entity = (MovieDto)movie;       
 
 
         entity.Genre = new Genre()
