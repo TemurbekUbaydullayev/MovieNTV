@@ -35,12 +35,13 @@ public class UserService(IUnitOfWork unitOfWork) : IUserService
         return (UserDto)user;
     }
 
-    public async Task UpdateAsync(UpdateUserDto dto)
+    public async Task UpdateAsync(int id, UpdateUserDto dto)
     {
-        var model = await _unitOfWork.User.GetByIdAsync(dto.Id);
+        var model = await _unitOfWork.User.GetByIdAsync(id);
         if (model is null)
             throw new StatusCodeExeption(HttpStatusCode.NotFound, "User not found");
         var user = (User)dto;
+        user.Id = id;
         user.CreatedAt = TimeHelper.GetCurrentTime();
         user.Password = model.Password;
 

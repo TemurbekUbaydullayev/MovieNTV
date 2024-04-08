@@ -30,7 +30,6 @@ public class AccountService(IUnitOfWork ofWork,
         if (!user.Password.Equals(PasswordHasher.GetHash(login.Password)))
             throw new StatusCodeExeption(HttpStatusCode.Conflict, "Password incorrect!");
 
-
         return _auth.GeneratedToken(user);
     }
 

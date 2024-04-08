@@ -9,6 +9,7 @@ using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using MovieNTV.Configurations;
 using MovieNTV.Middlewares;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +19,10 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Serilog
+builder.Host.UseSerilog((hostingContext, loggerConfiguration) =>
+loggerConfiguration.ReadFrom.Configuration(hostingContext.Configuration));
 
 // Db Context
 builder.Services.AddDbContext<AppDbContext>(options =>

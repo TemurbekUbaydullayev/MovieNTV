@@ -2,6 +2,7 @@
 using Application.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace MovieNTV.Controllers
 {
@@ -27,7 +28,9 @@ namespace MovieNTV.Controllers
         [HttpPut]
         public async Task<IActionResult> UpdateAsync([FromForm] UpdateUserDto dto)
         {
-            await _userService.UpdateAsync(dto);
+            var id = int.Parse(HttpContext.User.FindFirst("Id")!.Value);
+
+            await _userService.UpdateAsync(id, dto);
             return Ok();
         }
 

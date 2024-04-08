@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240404112253_ThirdMigrate")]
-    partial class ThirdMigrate
+    [Migration("20240406091749_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -132,6 +132,19 @@ namespace Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedAt = new DateTime(2024, 4, 6, 14, 17, 48, 814, DateTimeKind.Local).AddTicks(550),
+                            Email = "ubaydullayev117@gmail.com",
+                            FirstName = "Temur",
+                            Gender = 1,
+                            LastName = "Ubaydullayev",
+                            Password = "6596443e7768f0c1ae055535783a3b6fcd3c2efb4fc0725336e31e087c4d10fc",
+                            Role = 1
+                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.Movie", b =>

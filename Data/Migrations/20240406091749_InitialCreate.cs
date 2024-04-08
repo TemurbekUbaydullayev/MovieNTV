@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Data.Migrations
 {
     /// <inheritdoc />
-    public partial class ThirdMigrate : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -71,6 +71,11 @@ namespace Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "Id", "CreatedAt", "Email", "FirstName", "Gender", "LastName", "Password", "Role" },
+                values: new object[] { 1, new DateTime(2024, 4, 6, 14, 17, 48, 814, DateTimeKind.Local).AddTicks(550), "ubaydullayev117@gmail.com", "Temur", 1, "Ubaydullayev", "6596443e7768f0c1ae055535783a3b6fcd3c2efb4fc0725336e31e087c4d10fc", 1 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Movies_GenreId",

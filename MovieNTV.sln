@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34607.119
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieNTV", "MovieNTV\MovieNTV.csproj", "{925BE0B5-3AC0-4875-B27A-FFCC50B5B02A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieNTV", "MovieNTV\MovieNTV.csproj", "{925BE0B5-3AC0-4875-B27A-FFCC50B5B02A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{46F4B7CD-5883-4AD7-9279-5AEC91330897}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{46F4B7CD-5883-4AD7-9279-5AEC91330897}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{8F5D8F33-E4FB-4FF8-9A48-4368AA30D46E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "Data\Data.csproj", "{8F5D8F33-E4FB-4FF8-9A48-4368AA30D46E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{54186463-C37D-4B68-88A7-FB8074D99947}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{54186463-C37D-4B68-88A7-FB8074D99947}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
