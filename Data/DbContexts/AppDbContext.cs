@@ -22,7 +22,7 @@ public class AppDbContext(DbContextOptions<AppDbContext> options)
                 Email = "ubaydullayev117@gmail.com",
                 Gender = Gender.Male,
                 Password = "6596443e7768f0c1ae055535783a3b6fcd3c2efb4fc0725336e31e087c4d10fc",
-                Role = Role.Admin
+                Role = Role.SuperAdmin
             });
     }
 }

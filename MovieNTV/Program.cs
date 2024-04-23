@@ -20,6 +20,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Cache
+builder.Services.AddMemoryCache();
+
 // Serilog
 builder.Host.UseSerilog((hostingContext, loggerConfiguration) =>
 loggerConfiguration.ReadFrom.Configuration(hostingContext.Configuration));
@@ -27,7 +30,7 @@ loggerConfiguration.ReadFrom.Configuration(hostingContext.Configuration));
 // Db Context
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("LocalDb"));
+    options.UseNpgsql(builder.Configuration.GetConnectionString("LocalDb"));
     options.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
 });
 
@@ -40,6 +43,8 @@ builder.Services.AddTransient<IAuthManager, AuthManager>();
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<IGenreService, GenreService>();
 builder.Services.AddTransient<IMovieService, MovieService>();
+builder.Services.AddTransient<IEmailService, EmailService>();
+builder.Services.AddTransient<IAdminService, AdminService>();
 
 // Configure
 builder.Services.ConfigureJwtAuthorize(builder.Configuration);

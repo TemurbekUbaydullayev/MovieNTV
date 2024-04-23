@@ -1,6 +1,4 @@
-﻿
-
-using Domain.Entities;
+﻿using Domain.Entities;
 using FluentValidation;
 
 namespace Application.Common.Validators;

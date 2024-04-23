@@ -11,7 +11,7 @@ public class GenresController(IGenreService genreService) : ControllerBase
 {
     private readonly IGenreService _genreService = genreService;
 
-    [HttpPost, Authorize(Roles = "Admin")]
+    [HttpPost, Authorize(Roles = "Admin, SuperAdmin")]
     public async Task<IActionResult> CreateAsync([FromForm] AddGenreDto dto)
     {
         await _genreService.CreateAsync(dto);
@@ -24,20 +24,20 @@ public class GenresController(IGenreService genreService) : ControllerBase
         return Ok(await _genreService.GetAllAsync());
     }
 
-    [HttpGet("{id}"), Authorize(Roles = "Admin")]
+    [HttpGet("{id}"), Authorize]
     public async Task<IActionResult> GetByIdAsync(int id)
     {
         return Ok(await _genreService.GetByIdAsync(id));
     }
 
-    [HttpDelete("{id}"), Authorize(Roles = "Admin")]
+    [HttpDelete("{id}"), Authorize(Roles = "Admin, SuperAdmin")]
     public async Task<IActionResult> DeleteAsync(int id)
     {
         await _genreService.DeleteAsync(id);
         return Ok();
     }
 
-    [HttpPut, Authorize("Admin")]
+    [HttpPut, Authorize("Admin, SuperAdmin")]
     public async Task<IActionResult> UpdateAsync([FromForm] GenreDto dto)
     {
         await _genreService.UpdateAsync(dto);

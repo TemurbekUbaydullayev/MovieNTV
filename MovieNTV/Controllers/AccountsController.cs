@@ -25,4 +25,13 @@ public class AccountsController(IAccountService accountService) : ControllerBase
         var result = await _accountService.LoginAsync(dto);
         return Ok($"Token : {result}");
     }
+    [HttpPost("sendcode")]
+    public async Task<IActionResult> SendCodeAsync([FromForm]string email)
+    {
+        await _accountService.SendCodeAsync(email);
+        return Ok();
+    }
+    [HttpPost("check")]
+    public async Task<IActionResult> CheckCodeAsync([FromForm]string email, [FromForm]string code)
+        => Ok(await _accountService.CheckCodeAsync(email, code));
 }
