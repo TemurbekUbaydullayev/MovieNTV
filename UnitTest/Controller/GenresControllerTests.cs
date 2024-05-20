@@ -40,4 +40,18 @@ internal class GenresControllerTests
         Assert.That(okResult!.Value, Is.InstanceOf<List<GenreDto>>());
         Assert.That(okResult.Value, Is.EqualTo(genres));
     }
+
+    [Test]
+    [TestCase("Test1")]
+    [TestCase("Test2")]
+    [TestCase("Test3")]
+    [TestCase("Test4")]
+    public async Task PostAsync(string name)
+    {
+        var dto = new AddGenreDto { Name = name };
+
+        var result = await controller.CreateAsync(dto);
+
+        Assert.That(result, Is.InstanceOf<OkResult>());
+    }
 }
