@@ -35,7 +35,7 @@ public class AdminService(IUnitOfWork work,
             throw new StatusCodeExeption(HttpStatusCode.NotFound, "User not found!");
 
         await _work.User.DeleteAsync(user);
-    }
+    }   
 
     public async Task<List<User>> GetAllAdminAsync()
         => (await _work.User.GetAllAsync())

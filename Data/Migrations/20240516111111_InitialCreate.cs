@@ -74,11 +74,6 @@ namespace Data.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.InsertData(
-                table: "Users",
-                columns: new[] { "Id", "CreatedAt", "Email", "FirstName", "Gender", "IsVerified", "LastName", "Password", "Role" },
-                values: new object[] { 1, new DateTime(2024, 4, 23, 10, 12, 11, 421, DateTimeKind.Utc).AddTicks(5108), "ubaydullayev117@gmail.com", "Temur", 1, false, "Ubaydullayev", "6596443e7768f0c1ae055535783a3b6fcd3c2efb4fc0725336e31e087c4d10fc", 0 });
-
             migrationBuilder.CreateIndex(
                 name: "IX_Movies_GenreId",
                 table: "Movies",

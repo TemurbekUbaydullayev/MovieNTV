@@ -21,9 +21,9 @@ public class GenreService(IUnitOfWork unitOfWork,
         var genre = await _unitOfWork.Genre.GetByNameAsync(dto.Name);
         if (genre != null)
             throw new StatusCodeExeption(HttpStatusCode.AlreadyReported, "janr oldin foydalanilgan");
-        //var result = await _validator.ValidateAsync(dto);
-        //if (!result.IsValid)
-        //    throw new ValidatorException(result.GetErrorMessages());
+        var result = await _validator.ValidateAsync(dto);
+        if (!result.IsValid)
+            throw new ValidatorException(result.GetErrorMessages());
 
         await _unitOfWork.Genre.CreateAsync((Genre)dto);
     }

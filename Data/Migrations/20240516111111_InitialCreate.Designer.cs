@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240423101212_InitialCreate")]
+    [Migration("20240516111111_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -135,20 +135,6 @@ namespace Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CreatedAt = new DateTime(2024, 4, 23, 10, 12, 11, 421, DateTimeKind.Utc).AddTicks(5108),
-                            Email = "ubaydullayev117@gmail.com",
-                            FirstName = "Temur",
-                            Gender = 1,
-                            IsVerified = false,
-                            LastName = "Ubaydullayev",
-                            Password = "6596443e7768f0c1ae055535783a3b6fcd3c2efb4fc0725336e31e087c4d10fc",
-                            Role = 0
-                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.Movie", b =>
